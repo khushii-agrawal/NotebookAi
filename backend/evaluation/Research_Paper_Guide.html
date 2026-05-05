@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Research Paper Implementation Guide — LM Notebook</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a2e; line-height: 1.7; max-width: 850px; margin: 0 auto; padding: 40px 30px; background: #fff; }
+  h1 { font-size: 28px; color: #0f0f23; border-bottom: 3px solid #6c63ff; padding-bottom: 10px; margin-bottom: 8px; }
+  h2 { font-size: 22px; color: #6c63ff; margin-top: 35px; margin-bottom: 12px; border-left: 4px solid #6c63ff; padding-left: 12px; }
+  h3 { font-size: 17px; color: #333; margin-top: 20px; margin-bottom: 8px; }
+  p { margin-bottom: 10px; font-size: 14px; }
+  ul, ol { margin: 8px 0 12px 24px; font-size: 14px; }
+  li { margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+  th { background: #6c63ff; color: white; padding: 8px 10px; text-align: left; font-weight: 600; }
+  td { padding: 7px 10px; border-bottom: 1px solid #e0e0e0; }
+  tr:nth-child(even) { background: #f8f8ff; }
+  code { font-family: 'JetBrains Mono', monospace; background: #f0f0f5; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+  pre { background: #1a1a2e; color: #e0e0e0; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 10px 0 16px; font-size: 12px; line-height: 1.5; }
+  pre code { background: none; padding: 0; color: inherit; }
+  .highlight { background: #fff3cd; padding: 12px 16px; border-left: 4px solid #ffc107; border-radius: 4px; margin: 12px 0; font-size: 13px; }
+  .tip { background: #d4edda; padding: 12px 16px; border-left: 4px solid #28a745; border-radius: 4px; margin: 12px 0; font-size: 13px; }
+  .important { background: #f8d7da; padding: 12px 16px; border-left: 4px solid #dc3545; border-radius: 4px; margin: 12px 0; font-size: 13px; }
+  .page-break { page-break-before: always; }
+  .subtitle { color: #666; font-size: 15px; margin-bottom: 25px; }
+  @media print {
+    body { padding: 20px; }
+    .page-break { page-break-before: always; }
+    pre { background: #f5f5f5 !important; color: #333 !important; border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Research Paper Implementation Guide</h1>
+<p class="subtitle">LM Notebook — RAG Embedding Model Evaluation for AI-Powered Document Notebooks</p>
+
+<h2>1. Suggested Paper Title</h2>
+<p><strong>"Evaluating Transformer-Based Embedding Models for Retrieval-Augmented Generation in AI-Powered Document Notebooks"</strong></p>
+<p>Alternate titles:</p>
+<ul>
+  <li>"A Comparative Study of Embedding Architectures for RAG-Based Document Question Answering"</li>
+  <li>"Lightweight RAG Pipeline Design: Embedding Model Selection for Interactive Notebook Applications"</li>
+</ul>
+
+<h2>2. Paper Structure (IEEE / ACM Format)</h2>
+
+<h3>Section 1 — Abstract (~200 words)</h3>
+<p>Write this <strong>LAST</strong> after experiments. Template:</p>
+<div class="highlight">
+Retrieval-Augmented Generation (RAG) has emerged as a dominant paradigm for grounding LLM outputs in domain-specific documents. However, the choice of embedding model significantly impacts end-to-end system accuracy. In this paper, we present LM Notebook, an AI-powered document notebook employing a RAG pipeline for interactive QA, summarization, quiz generation, flashcard creation, and mind map extraction. We conduct a systematic evaluation of six transformer-based embedding models — spanning BERT, DistilBERT, RoBERTa, and BGE architectures — plus three ensemble pairs using Reciprocal Rank Fusion. Our experiments on [X] question-answer pairs across [Y] documents demonstrate that [BEST MODEL] achieves the highest faithfulness score of [X.XX]. We further show that ensemble retrieval via RRF can outperform individual models by [X]%.
+</div>
+
+<h3>Section 2 — Introduction (~1 page)</h3>
+<ul>
+  <li><strong>Paragraph 1:</strong> LLMs hallucinate → RAG solves this → but embedding model choice is overlooked</li>
+  <li><strong>Paragraph 2:</strong> Most tutorials default to OpenAI embeddings (costly) → open-source options exist but are rarely compared in applied RAG</li>
+  <li><strong>Paragraph 3:</strong> Your contribution — built LM Notebook, compare 6 models + 3 ensemble pairs + 3 chunking strategies</li>
+  <li><strong>Paragraph 4:</strong> Paper organization overview</li>
+</ul>
+
+<h3>Section 3 — Related Work (~1 page)</h3>
+<ul>
+  <li><strong>3.1 RAG:</strong> Lewis et al. 2020 (original RAG paper), REALM, recent surveys</li>
+  <li><strong>3.2 Sentence Embeddings:</strong> Sentence-BERT (Reimers 2019), MTEB Benchmark (2023), BGE models</li>
+  <li><strong>3.3 Hybrid/Ensemble Retrieval:</strong> RRF (Cormack et al. 2009), Elasticsearch hybrid search</li>
+  <li><strong>3.4 AI Educational Tools:</strong> Google NotebookLM, ChatPDF — position your work as open-source alternative</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h3>Section 4 — System Architecture (~1.5 pages)</h3>
+<p>Include this architecture diagram (recreate in draw.io for the paper):</p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                 FRONTEND (React + Vite)                  │
+│   Chat │ Summary │ Quiz │ Flashcard │ MindMap │ Report  │
+└────────────────────────┬────────────────────────────────┘
+                         │ REST API
+┌────────────────────────▼────────────────────────────────┐
+│                  BACKEND (FastAPI)                       │
+│  ┌────────────────────────────────────────────────────┐ │
+│  │              RAG Pipeline                          │ │
+│  │  PDF Upload → Chunking → Embedding → ChromaDB     │ │
+│  │  Query → Embed → Retrieve Top-K → LLM Generate    │ │
+│  └────────────────────────────────────────────────────┘ │
+│  ┌────────────┐ ┌────────────┐ ┌────────────────────┐  │
+│  │  MongoDB   │ │  ChromaDB  │ │ Groq API / Ollama  │  │
+│  │ (Users)    │ │ (Vectors)  │ │ (LLM Generation)   │  │
+│  └────────────┘ └────────────┘ └────────────────────┘  │
+└─────────────────────────────────────────────────────────┘</code></pre>
+
+<p>Describe: Document ingestion (PyPDF2, chunking, embedding, ChromaDB), RAG query pipeline, all 6 features, Groq→Ollama fallback.</p>
+
+<div class="page-break"></div>
+
+<h2>3. Methodology — THE CORE</h2>
+
+<h3>3.1 Research Questions</h3>
+<ul>
+  <li><strong>RQ1:</strong> How does embedding model choice affect retrieval quality in a RAG pipeline?</li>
+  <li><strong>RQ2:</strong> What is the relationship between model size and end-to-end answer accuracy?</li>
+  <li><strong>RQ3:</strong> Can ensemble retrieval (two models + RRF) outperform individual models?</li>
+  <li><strong>RQ4:</strong> How does chunking strategy interact with embedding model performance?</li>
+</ul>
+
+<h3>3.2 Embedding Models Under Evaluation</h3>
+<table>
+  <tr><th>Model ID</th><th>Architecture</th><th>Parameters</th><th>Embedding Dim</th></tr>
+  <tr><td>all-MiniLM-L6-v2</td><td>BERT (distilled)</td><td>22M</td><td>384</td></tr>
+  <tr><td>msmarco-distilbert-base-v4</td><td>DistilBERT</td><td>66M</td><td>768</td></tr>
+  <tr><td>BAAI/bge-small-en-v1.5</td><td>BERT (custom)</td><td>33M</td><td>384</td></tr>
+  <tr><td>BAAI/bge-base-en-v1.5</td><td>BERT (custom)</td><td>109M</td><td>768</td></tr>
+  <tr><td>all-roberta-large-v1</td><td>RoBERTa</td><td>355M</td><td>1024</td></tr>
+  <tr><td>BAAI/bge-large-en-v1.5</td><td>BERT (custom)</td><td>335M</td><td>1024</td></tr>
+</table>
+
+<h3>3.3 Ensemble Pairs (Reciprocal Rank Fusion)</h3>
+<table>
+  <tr><th>Ensemble Pair</th><th>Rationale</th><th>Combined Params</th></tr>
+  <tr><td>BGE-small + MiniLM</td><td>Lightweight: can two small models beat one large?</td><td>55M</td></tr>
+  <tr><td>BGE-small + DistilBERT-MSMARCO</td><td>Cross-training: general + passage-retrieval specialist</td><td>99M</td></tr>
+  <tr><td>BGE-base + RoBERTa-large</td><td>Best-of-both: top BGE + top RoBERTa</td><td>464M</td></tr>
+</table>
+
+<h3>3.4 Chunking Strategies</h3>
+<table>
+  <tr><th>Strategy</th><th>Description</th></tr>
+  <tr><td>Fixed-character (500)</td><td>Split every 500 chars with 50-char overlap (baseline)</td></tr>
+  <tr><td>Sentence-aware</td><td>NLTK sentence tokenization, grouped to ~500 chars</td></tr>
+  <tr><td>Paragraph-based</td><td>Split on double newlines, merge short paragraphs</td></tr>
+</table>
+
+<h3>3.5 Evaluation Metrics</h3>
+<table>
+  <tr><th>Metric</th><th>What It Measures</th><th>Type</th></tr>
+  <tr><td>Hit Rate @6</td><td>Did at least 1 relevant chunk appear in top-6?</td><td>Retrieval</td></tr>
+  <tr><td>Keyword Recall</td><td>Fraction of relevant keywords in retrieved chunks</td><td>Retrieval</td></tr>
+  <tr><td>Answer Relevancy</td><td>Semantic similarity: generated answer vs ground truth</td><td>Generation</td></tr>
+  <tr><td>Faithfulness</td><td>Semantic similarity: generated answer vs context</td><td>Generation</td></tr>
+  <tr><td>Embedding Latency</td><td>Time to embed a single query (ms)</td><td>Performance</td></tr>
+  <tr><td>Total Latency</td><td>End-to-end time: query to answer (ms)</td><td>Performance</td></tr>
+</table>
+
+<h3>3.6 Dataset Creation</h3>
+<div class="important"><strong>⚠️ YOU MUST DO THIS:</strong> Create 30+ question-answer pairs manually from 3-5 test PDFs. This is the ground truth for all experiments.</div>
+<pre><code>{
+  "id": "q1",
+  "document": "ml_chapter3.pdf",
+  "question": "What is the bias-variance tradeoff?",
+  "ground_truth_answer": "The tension between fitting training data and generalizing...",
+  "relevant_keywords": ["bias", "variance", "tradeoff", "generalization"]
+}</code></pre>
+
+<h3>3.7 Experimental Setup</h3>
+<ul>
+  <li><strong>Hardware:</strong> [Your machine specs — CPU, RAM, GPU]</li>
+  <li><strong>LLM:</strong> Llama 3.1-8B via Groq API (fixed across all experiments)</li>
+  <li><strong>Retrieval:</strong> Top-6 chunks per query</li>
+  <li><strong>Vector DB:</strong> ChromaDB (persistent, cosine similarity)</li>
+  <li><strong>Runs:</strong> Each experiment repeated 3 times, report mean ± std</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h2>4. Results Tables (Fill After Running)</h2>
+
+<h3>Table 1 — Individual Embedding Model Comparison</h3>
+<table>
+  <tr><th>Model</th><th>Params</th><th>Hit@6</th><th>Recall</th><th>AnsRel</th><th>Faith.</th><th>Embed(ms)</th></tr>
+  <tr><td>MiniLM-L6</td><td>22M</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+  <tr><td>DistilBERT-MSMARCO</td><td>66M</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+  <tr><td>BGE-small (baseline)</td><td>33M</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+  <tr><td>BGE-base</td><td>109M</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+  <tr><td>RoBERTa-large</td><td>355M</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+  <tr><td>BGE-large</td><td>335M</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+
+<h3>Table 2 — Chunking Strategy Comparison</h3>
+<table>
+  <tr><th>Strategy</th><th>Hit@6</th><th>Keyword Recall</th></tr>
+  <tr><td>Fixed-character (500)</td><td>—</td><td>—</td></tr>
+  <tr><td>Sentence-aware</td><td>—</td><td>—</td></tr>
+  <tr><td>Paragraph-based</td><td>—</td><td>—</td></tr>
+</table>
+
+<h3>Table 3 — Ensemble Retrieval (RRF) Comparison</h3>
+<table>
+  <tr><th>Ensemble Pair</th><th>Params</th><th>Hit@6</th><th>Recall</th><th>AnsRel</th><th>Faith.</th></tr>
+  <tr><td>BGE-small + MiniLM</td><td>55M</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+  <tr><td>BGE-small + DistilBERT</td><td>99M</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+  <tr><td>BGE-base + RoBERTa</td><td>464M</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+
+<h2>5. Figures You Need</h2>
+<ol>
+  <li><strong>System Architecture Diagram</strong> — Use draw.io (clean block diagram)</li>
+  <li><strong>Bar Chart</strong> — Embedding models vs Faithfulness/Hit Rate (auto-generated by script)</li>
+  <li><strong>Scatter Plot</strong> — Model size vs Accuracy with latency bubbles (auto-generated)</li>
+  <li><strong>Ensemble Chart</strong> — RRF pairs comparison (auto-generated)</li>
+  <li><strong>App Screenshots</strong> — Chat, Quiz, Flashcard, MindMap pages</li>
+</ol>
+
+<div class="page-break"></div>
+
+<h2>6. How To Run The Evaluation</h2>
+
+<h3>Step 1: Prepare test documents</h3>
+<pre><code>mkdir d:\LM Notebook\backend\evaluation\documents\
+# Copy 3-5 test PDFs into this folder</code></pre>
+
+<h3>Step 2: Fill ground_truth.json (30+ Q&A pairs)</h3>
+<pre><code># Edit: d:\LM Notebook\backend\evaluation\ground_truth.json</code></pre>
+
+<h3>Step 3: Install dependencies</h3>
+<pre><code>cd d:\LM Notebook\backend
+pip install sentence-transformers scikit-learn tabulate matplotlib nltk</code></pre>
+
+<h3>Step 4: Run experiments</h3>
+<pre><code># Run all 3 experiments
+python -m evaluation.evaluate_embeddings --mode all
+
+# Or run individually:
+python -m evaluation.evaluate_embeddings --mode embeddings
+python -m evaluation.evaluate_embeddings --mode chunking
+python -m evaluation.evaluate_embeddings --mode ensemble</code></pre>
+
+<h3>Step 5: Collect results</h3>
+<pre><code>evaluation/results/
+├── embedding_comparison.json
+├── chunking_comparison.json
+├── ensemble_comparison.json
+├── chart_metrics_comparison.png       ← For paper
+├── chart_accuracy_vs_latency.png      ← For paper
+└── chart_ensemble_comparison.png      ← For paper</code></pre>
+
+<h2>7. Key References</h2>
+<ol>
+  <li>Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks", NeurIPS 2020</li>
+  <li>Reimers & Gurevych, "Sentence-BERT", EMNLP 2019</li>
+  <li>Devlin et al., "BERT: Pre-training of Deep Bidirectional Transformers", NAACL 2019</li>
+  <li>Liu et al., "RoBERTa: A Robustly Optimized BERT Pretraining Approach", 2019</li>
+  <li>Sanh et al., "DistilBERT, a distilled version of BERT", NeurIPS Workshop 2019</li>
+  <li>Xiao et al., "C-Pack: Packaged Resources for General Chinese Embedding", 2023 (BGE models)</li>
+  <li>Muennighoff et al., "MTEB: Massive Text Embedding Benchmark", EACL 2023</li>
+  <li>Cormack et al., "Reciprocal Rank Fusion", SIGIR 2009</li>
+</ol>
+
+<h2>8. Where to Submit</h2>
+<table>
+  <tr><th>Venue</th><th>Type</th><th>Difficulty</th><th>Fit</th></tr>
+  <tr><td>arXiv</td><td>Preprint (no review)</td><td>Easy</td><td>⭐⭐⭐⭐⭐</td></tr>
+  <tr><td>IEEE ICSC</td><td>Conference</td><td>Medium</td><td>⭐⭐⭐⭐</td></tr>
+  <tr><td>ACM SAC</td><td>Conference</td><td>Medium</td><td>⭐⭐⭐⭐</td></tr>
+  <tr><td>IEEE Access</td><td>Journal (open)</td><td>Medium</td><td>⭐⭐⭐⭐</td></tr>
+  <tr><td>MDPI Applied Sciences</td><td>Journal (open)</td><td>Easier</td><td>⭐⭐⭐</td></tr>
+  <tr><td>University Conference</td><td>Local</td><td>Easy</td><td>⭐⭐⭐⭐⭐</td></tr>
+</table>
+
+<div class="tip"><strong>💡 Tip:</strong> Submit to arXiv first (instant publish), then to a conference. Use LaTeX with IEEE/ACM templates from Overleaf for professional formatting.</div>
+
+<hr style="margin-top: 40px;">
+<p style="text-align: center; color: #999; font-size: 12px;">LM Notebook — Research Paper Implementation Guide • Generated for RAG Evaluation Study</p>
+
+</body>
+</html>

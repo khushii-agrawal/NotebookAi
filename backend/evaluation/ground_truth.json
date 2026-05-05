@@ -1,0 +1,362 @@
+[
+  {
+    "id": "q1",
+    "document": "doc1.pdf",
+    "question": "What is NoteBar?",
+    "ground_truth_answer": "NoteBar is an AI-assisted note-taking system that organizes notes using classification, retrieval, and user interaction.",
+    "relevant_keywords": [
+      "NoteBar",
+      "AI note-taking"
+    ]
+  },
+  {
+    "id": "q2",
+    "document": "doc1.pdf",
+    "question": "What problem does NoteBar solve?",
+    "ground_truth_answer": "It addresses inefficiencies in digital note-taking systems and improves organization and retrieval of notes.",
+    "relevant_keywords": [
+      "inefficiency",
+      "digital notes"
+    ]
+  },
+  {
+    "id": "q3",
+    "document": "doc1.pdf",
+    "question": "What dataset is introduced in NoteBar?",
+    "ground_truth_answer": "A persona-conditioned dataset of 3173 notes and 8494 annotated concepts.",
+    "relevant_keywords": [
+      "dataset",
+      "persona"
+    ]
+  },
+  {
+    "id": "q4",
+    "document": "doc1.pdf",
+    "question": "What is persona conditioning?",
+    "ground_truth_answer": "It uses user-specific context and writing style to improve classification and understanding.",
+    "relevant_keywords": [
+      "persona",
+      "context"
+    ]
+  },
+  {
+    "id": "q5",
+    "document": "doc1.pdf",
+    "question": "What is multi-label classification?",
+    "ground_truth_answer": "It assigns multiple semantic labels to a single note representing overlapping intents.",
+    "relevant_keywords": [
+      "multi label",
+      "classification"
+    ]
+  },
+  {
+    "id": "q6",
+    "document": "doc1.pdf",
+    "question": "What model is used in NoteBar?",
+    "ground_truth_answer": "Encoder-only transformer models such as BERT or DeBERTa are used.",
+    "relevant_keywords": [
+      "BERT",
+      "DeBERTa"
+    ]
+  },
+  {
+    "id": "q7",
+    "document": "doc1.pdf",
+    "question": "What is the role of vector database in NoteBar?",
+    "ground_truth_answer": "It stores embeddings and enables semantic retrieval of notes.",
+    "relevant_keywords": [
+      "vector database",
+      "embeddings"
+    ]
+  },
+  {
+    "id": "q8",
+    "document": "doc1.pdf",
+    "question": "What is RAG in NoteBar?",
+    "ground_truth_answer": "RAG is used to generate contextual suggestions using retrieved information.",
+    "relevant_keywords": [
+      "RAG",
+      "retrieval"
+    ]
+  },
+  {
+    "id": "q9",
+    "document": "doc1.pdf",
+    "question": "What is user-in-the-loop feedback?",
+    "ground_truth_answer": "Users can accept, edit, or reject suggestions to refine the system.",
+    "relevant_keywords": [
+      "feedback",
+      "user loop"
+    ]
+  },
+  {
+    "id": "q10",
+    "document": "doc1.pdf",
+    "question": "What are the components of NoteBar pipeline?",
+    "ground_truth_answer": "Storage, classification, embedding, retrieval, and feedback components.",
+    "relevant_keywords": [
+      "pipeline",
+      "architecture"
+    ]
+  },
+  {
+    "id": "q11",
+    "document": "doc2.pdf",
+    "question": "What is a data structure?",
+    "ground_truth_answer": "A data structure is a way of storing and organizing data in a computer so that it can be used efficiently.",
+    "relevant_keywords": [
+      "data structure",
+      "organization"
+    ]
+  },
+  {
+    "id": "q12",
+    "document": "doc2.pdf",
+    "question": "What are linear data structures?",
+    "ground_truth_answer": "They store elements sequentially such as stacks, queues, and linked lists.",
+    "relevant_keywords": [
+      "linear",
+      "sequential"
+    ]
+  },
+  {
+    "id": "q13",
+    "document": "doc2.pdf",
+    "question": "What are non-linear data structures?",
+    "ground_truth_answer": "They store elements in a non-sequential way such as trees and graphs.",
+    "relevant_keywords": [
+      "non linear",
+      "tree graph"
+    ]
+  },
+  {
+    "id": "q14",
+    "document": "doc2.pdf",
+    "question": "What is an algorithm?",
+    "ground_truth_answer": "An algorithm is a step-by-step unambiguous procedure to solve a problem.",
+    "relevant_keywords": [
+      "algorithm",
+      "steps"
+    ]
+  },
+  {
+    "id": "q15",
+    "document": "doc2.pdf",
+    "question": "Why analyze algorithms?",
+    "ground_truth_answer": "To determine efficiency in terms of time and memory usage.",
+    "relevant_keywords": [
+      "analysis",
+      "efficiency"
+    ]
+  },
+  {
+    "id": "q16",
+    "document": "doc2.pdf",
+    "question": "What is running time analysis?",
+    "ground_truth_answer": "It determines how processing time increases with input size.",
+    "relevant_keywords": [
+      "running time",
+      "input size"
+    ]
+  },
+  {
+    "id": "q17",
+    "document": "doc2.pdf",
+    "question": "What is rate of growth?",
+    "ground_truth_answer": "It is how the running time of an algorithm increases with input size.",
+    "relevant_keywords": [
+      "growth",
+      "complexity"
+    ]
+  },
+  {
+    "id": "q18",
+    "document": "doc2.pdf",
+    "question": "What is an abstract data type?",
+    "ground_truth_answer": "It combines data structures with operations on that data.",
+    "relevant_keywords": [
+      "ADT",
+      "operations"
+    ]
+  },
+  {
+    "id": "q19",
+    "document": "doc2.pdf",
+    "question": "What is a stack?",
+    "ground_truth_answer": "A stack is a LIFO data structure where the last element inserted is the first removed.",
+    "relevant_keywords": [
+      "stack",
+      "LIFO"
+    ]
+  },
+  {
+    "id": "q20",
+    "document": "doc2.pdf",
+    "question": "What is a queue?",
+    "ground_truth_answer": "A queue is a FIFO data structure where the first element inserted is the first removed.",
+    "relevant_keywords": [
+      "queue",
+      "FIFO"
+    ]
+  },
+  {
+    "id": "q21",
+    "document": "doc3.pdf",
+    "question": "What does Law 1 state in 48 Laws of Power?",
+    "ground_truth_answer": "Never outshine the master and make superiors feel superior.",
+    "relevant_keywords": [
+      "law1",
+      "master"
+    ]
+  },
+  {
+    "id": "q22",
+    "document": "doc3.pdf",
+    "question": "What is Law 2 about?",
+    "ground_truth_answer": "Do not trust friends too much and learn to use enemies.",
+    "relevant_keywords": [
+      "friends",
+      "enemies"
+    ]
+  },
+  {
+    "id": "q23",
+    "document": "doc3.pdf",
+    "question": "What is Law 3?",
+    "ground_truth_answer": "Conceal your intentions to keep others off-balance.",
+    "relevant_keywords": [
+      "conceal",
+      "intentions"
+    ]
+  },
+  {
+    "id": "q24",
+    "document": "doc3.pdf",
+    "question": "What is Law 4?",
+    "ground_truth_answer": "Always say less than necessary.",
+    "relevant_keywords": [
+      "speak less",
+      "control"
+    ]
+  },
+  {
+    "id": "q25",
+    "document": "doc3.pdf",
+    "question": "What is Law 5?",
+    "ground_truth_answer": "Guard your reputation as it is the cornerstone of power.",
+    "relevant_keywords": [
+      "reputation",
+      "power"
+    ]
+  },
+  {
+    "id": "q26",
+    "document": "doc3.pdf",
+    "question": "What is Law 6?",
+    "ground_truth_answer": "Court attention at all costs and stand out.",
+    "relevant_keywords": [
+      "attention",
+      "visibility"
+    ]
+  },
+  {
+    "id": "q27",
+    "document": "doc3.pdf",
+    "question": "What is Law 7?",
+    "ground_truth_answer": "Get others to do the work but take the credit.",
+    "relevant_keywords": [
+      "credit",
+      "work"
+    ]
+  },
+  {
+    "id": "q28",
+    "document": "doc3.pdf",
+    "question": "What is Law 8?",
+    "ground_truth_answer": "Make others come to you using bait.",
+    "relevant_keywords": [
+      "control",
+      "bait"
+    ]
+  },
+  {
+    "id": "q29",
+    "document": "doc3.pdf",
+    "question": "What is Law 9?",
+    "ground_truth_answer": "Win through actions, not arguments.",
+    "relevant_keywords": [
+      "actions",
+      "argument"
+    ]
+  },
+  {
+    "id": "q30",
+    "document": "doc3.pdf",
+    "question": "What is Law 10?",
+    "ground_truth_answer": "Avoid unhappy and unlucky people.",
+    "relevant_keywords": [
+      "negative",
+      "influence"
+    ]
+  },
+  {
+    "id": "q31",
+    "document": "doc3.pdf",
+    "question": "What is Law 11?",
+    "ground_truth_answer": "Make people dependent on you to maintain power.",
+    "relevant_keywords": [
+      "dependency",
+      "control"
+    ]
+  },
+  {
+    "id": "q32",
+    "document": "doc3.pdf",
+    "question": "What is Law 12?",
+    "ground_truth_answer": "Use selective honesty and generosity to disarm others.",
+    "relevant_keywords": [
+      "honesty",
+      "manipulation"
+    ]
+  },
+  {
+    "id": "q33",
+    "document": "doc3.pdf",
+    "question": "What is Law 13?",
+    "ground_truth_answer": "Appeal to self-interest when asking for help.",
+    "relevant_keywords": [
+      "self interest",
+      "help"
+    ]
+  },
+  {
+    "id": "q34",
+    "document": "doc3.pdf",
+    "question": "What is Law 14?",
+    "ground_truth_answer": "Pose as a friend but work as a spy.",
+    "relevant_keywords": [
+      "spy",
+      "strategy"
+    ]
+  },
+  {
+    "id": "q35",
+    "document": "doc3.pdf",
+    "question": "What is Law 15?",
+    "ground_truth_answer": "Crush your enemy totally.",
+    "relevant_keywords": [
+      "enemy",
+      "power"
+    ]
+  },
+  {
+    "id": "q36",
+    "document": "doc3.pdf",
+    "question": "What is Law 16?",
+    "ground_truth_answer": "Use absence to increase respect and value.",
+    "relevant_keywords": [
+      "absence",
+      "respect"
+    ]
+  }
+]

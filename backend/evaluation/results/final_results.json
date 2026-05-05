@@ -1,0 +1,45 @@
+{
+    "embeddings": {
+        "MiniLM-L6 (BERT)": {
+            "hit_rate": 0.5,
+            "faithfulness": 0.4915458048085889,
+            "embed_latency_ms": 39.74580764770508,
+            "num_params": "22M"
+        },
+        "BGE-small (current)": {
+            "hit_rate": 0.4722222222222222,
+            "faithfulness": 0.7299516664610969,
+            "embed_latency_ms": 25.039898024664986,
+            "num_params": "33M"
+        },
+        "DistilBERT-MSMARCO": {
+            "hit_rate": 0.4722222222222222,
+            "faithfulness": 0.4186919113207195,
+            "embed_latency_ms": 29.843628406524658,
+            "num_params": "66M"
+        },
+        "BGE-base": {
+            "hit_rate": 0.4722222222222222,
+            "faithfulness": 0.6741186281045278,
+            "embed_latency_ms": 70.58572769165039,
+            "num_params": "109M"
+        }
+    },
+    "chunking": {
+        "sentence-aware": {
+            "hit_rate": 0.4166666666666667,
+            "faithfulness": 0.5891484336720573,
+            "chunking_latency_ms": 725.4930271042717
+        },
+        "paragraph": {
+            "hit_rate": 0.5277777777777778,
+            "faithfulness": 0.283442835840914,
+            "chunking_latency_ms": 0.6470481554667155
+        },
+        "fixed-char-500": {
+            "hit_rate": 0.4722222222222222,
+            "faithfulness": 0.7489205391870605,
+            "chunking_latency_ms": 0.629670090145535
+        }
+    }
+}
