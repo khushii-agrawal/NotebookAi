@@ -10,6 +10,9 @@ import MindMapPage from "./pages/MindMapPage";
 import QuizPage from "./pages/QuizPage";
 import FlashcardPage from "./pages/FlashcardPage";
 import ReportPage from "./pages/ReportPage";
+import Profile from "./pages/profile";
+import Settings from "./pages/Settings";
+import Statistics from "./pages/Statistics";
 
 const App = () => {
   return (
@@ -32,6 +35,9 @@ const App = () => {
             <Route path="/quiz/:notebookId" element={<QuizPage />} />
             <Route path="/flashcards/:notebookId" element={<FlashcardPage />} />
             <Route path="/report/:notebookId" element={<ReportPage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/statistics" element={<Statistics />} />
           </Route>
 
         </Routes>
