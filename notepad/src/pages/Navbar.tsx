@@ -36,7 +36,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full h-14 bg-slate-900 border-b border-slate-800/80 relative z-50">
+    <nav className="w-full h-14 bg-[#0a0a1a]/90 backdrop-blur-xl border-b border-white/5 relative z-50 shadow-sm shadow-black/20">
       <div className='w-full h-full px-4 sm:px-6'>
         <div className='flex items-center justify-between h-full'>
 
@@ -51,12 +51,12 @@ const Navbar = () => {
               </svg>
             </div>
             <span className='text-base font-bold text-white tracking-tight'>
-              AI Smart Notebook
+              NoteBar
             </span>
           </button>
 
           {/* Desktop Navigation — Center */}
-          <div className='hidden md:flex items-center gap-1 bg-slate-800/50 rounded-xl p-1'>
+          <div className='hidden md:flex items-center gap-1 bg-white/5 rounded-xl p-1 border border-white/5'>
             <NavButton
               active={isActive('/')}
               onClick={() => navigate('/')}
@@ -186,7 +186,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className='md:hidden bg-slate-900 border-t border-slate-800' style={{ animation: "fadeSlideIn 0.2s ease-out" }}>
+        <div className='md:hidden bg-[#0d0d22]/95 backdrop-blur-xl border-t border-white/5' style={{ animation: "fadeSlideIn 0.2s ease-out" }}>
           <div className='px-4 py-3 space-y-1'>
             <MobileNavButton active={isActive('/')} onClick={() => navigate('/')}>
               🏠 Home
