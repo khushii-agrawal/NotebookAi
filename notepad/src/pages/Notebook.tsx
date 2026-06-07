@@ -99,19 +99,19 @@ const Notebook = () => {
 
   return (
     <>
-      <div className="flex h-[calc(100vh-56px)] bg-gray-50 dark:bg-slate-950">
+      <div className="flex h-[calc(100vh-56px)] bg-[#0a0a1a]">
 
         {/* ===== SIDEBAR ===== */}
         <aside
           className={`${
             sidebarCollapsed ? "w-16" : "w-72"
-          } flex flex-col border-r border-gray-200/50 dark:border-slate-700/50 bg-white dark:bg-slate-900/95 transition-all duration-300 shrink-0`}
+          } flex flex-col border-r border-white/5 bg-[#0d0d22]/95 backdrop-blur-sm transition-all duration-300 shrink-0`}
         >
           {/* Sidebar Header — Fixed */}
-          <div className="p-3 border-b border-gray-200/50 dark:border-slate-700/50 shrink-0">
+          <div className="p-3 border-b border-white/5 shrink-0">
             <div className="flex items-center justify-between mb-2">
               {!sidebarCollapsed && (
-                <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-widest">
                   Notebooks
                 </h2>
               )}
@@ -119,7 +119,7 @@ const Notebook = () => {
                 {!sidebarCollapsed && (
                   <button
                     onClick={() => setIsUploadOpen(true)}
-                    className="p-1.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                    className="p-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:opacity-90 transition-opacity shadow-md shadow-purple-500/20"
                     title="New Notebook"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,7 +129,7 @@ const Notebook = () => {
                 )}
                 <button
                   onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-                  className="p-1.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
+                  className="p-1.5 text-gray-500 hover:text-gray-300 rounded-lg hover:bg-white/5 transition-colors"
                   title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,7 +154,7 @@ const Notebook = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search notebooks…"
-                  className="w-full pl-8 pr-3 py-1.5 text-xs bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg text-gray-700 dark:text-gray-300 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-purple-500/50 transition-all"
+                  className="w-full pl-8 pr-3 py-1.5 text-xs bg-white/5 border border-white/8 rounded-lg text-gray-300 placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-purple-500/40 transition-all"
                 />
               </div>
             )}
@@ -167,7 +167,7 @@ const Notebook = () => {
               <>
                 <button
                   onClick={() => setIsUploadOpen(true)}
-                  className="w-full p-2 rounded-lg text-center hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors"
+                  className="w-full p-2 rounded-lg text-center hover:bg-purple-900/30 transition-colors"
                   title="New Notebook"
                 >
                   <span className="text-lg">➕</span>
@@ -178,8 +178,8 @@ const Notebook = () => {
                     onClick={() => navigate(`/notebooks/${n.id}`)}
                     className={`w-full p-2 rounded-lg text-center transition-colors ${
                       notebookId === n.id
-                        ? "bg-purple-100 dark:bg-purple-900/40"
-                        : "hover:bg-gray-100 dark:hover:bg-slate-800"
+                        ? "bg-purple-900/40"
+                        : "hover:bg-white/5"
                     }`}
                     title={n.title}
                   >
@@ -200,28 +200,28 @@ const Notebook = () => {
                   key={n.id}
                   className={`group relative p-2.5 rounded-xl cursor-pointer transition-all duration-200 ${
                     notebookId === n.id
-                      ? "bg-purple-50 dark:bg-purple-900/30 border border-purple-300/50 dark:border-purple-600/40 shadow-sm"
-                      : "hover:bg-gray-50 dark:hover:bg-slate-800/60 border border-transparent"
+                      ? "bg-purple-500/10 border border-purple-500/25 shadow-sm shadow-purple-500/10"
+                      : "hover:bg-white/4 border border-transparent"
                   }`}
                   onClick={() => navigate(`/notebooks/${n.id}`)}
                 >
                   <div className="flex items-start gap-2.5">
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs shrink-0 mt-0.5 ${
                       notebookId === n.id
-                        ? "bg-purple-500/20 text-purple-500"
-                        : "bg-gray-100 dark:bg-slate-700/60 text-gray-400"
+                        ? "bg-purple-500/20 text-purple-400"
+                        : "bg-white/5 text-gray-500"
                     }`}>
                       📄
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className={`text-sm font-medium truncate ${
                         notebookId === n.id
-                          ? "text-purple-700 dark:text-purple-300"
-                          : "text-gray-700 dark:text-gray-300"
+                          ? "text-purple-300"
+                          : "text-gray-300"
                       }`}>
                         {n.title}
                       </p>
-                      <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-0.5">
+                      <p className="text-[10px] text-gray-600 mt-0.5">
                         {new Date(n.updatedAt).toLocaleDateString()}
                       </p>
                     </div>
@@ -232,13 +232,13 @@ const Notebook = () => {
                     <div className="flex gap-1.5 mt-2 ml-10">
                       <button
                         onClick={(e) => { e.stopPropagation(); renameNotebook(n.id); }}
-                        className="text-[10px] px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+                        className="text-[10px] px-2 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-400 hover:bg-blue-500/20 transition-colors"
                       >
                         Rename
                       </button>
                       <button
                         onClick={(e) => { e.stopPropagation(); deleteNotebook(n.id); }}
-                        className="text-[10px] px-2 py-0.5 rounded-md bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/50 transition-colors"
+                        className="text-[10px] px-2 py-0.5 rounded-md bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 transition-colors"
                       >
                         Delete
                       </button>
@@ -251,8 +251,8 @@ const Notebook = () => {
 
           {/* Sidebar Footer — Notebook Count */}
           {!sidebarCollapsed && (
-            <div className="p-3 border-t border-gray-200/50 dark:border-slate-700/50 shrink-0">
-              <p className="text-[10px] text-gray-400 dark:text-gray-600 text-center">
+            <div className="p-3 border-t border-white/5 shrink-0">
+              <p className="text-[10px] text-gray-600 text-center">
                 {notebooks.length} notebook{notebooks.length !== 1 ? "s" : ""}
               </p>
             </div>
