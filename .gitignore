@@ -6,3 +6,10 @@ dist/
 build/
 __pycache__/
 venv/
+
+# Backend runtime/generated files
+backend/chroma_db/
+backend/uploads/
+*.pyc
+*.pyo
+*.pickle
