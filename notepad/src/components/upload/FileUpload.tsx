@@ -34,8 +34,7 @@ const FileUpload = ({ onFilesSelected }: Props) => {
     <div
       onDrop={handleDrop}
       onDragOver={(e) => e.preventDefault()}
-      className="border border-dashed border-gray-300 dark:border-gray-600
-                 rounded-xl p-8 bg-gray-50 dark:bg-gray-900 transition"
+      className="border border-dashed border-white/10 rounded-xl p-8 bg-white/2 hover:bg-white/4 hover:border-purple-500/35 transition-all"
     >
       {/* Hidden file input */}
       <input
@@ -53,26 +52,25 @@ const FileUpload = ({ onFilesSelected }: Props) => {
 
       {/* Upload UI */}
       <div className="text-center">
-        <div className="mx-auto mb-4 w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900
-                        flex items-center justify-center text-purple-600 text-xl">
+        <div className="mx-auto mb-4 w-12 h-12 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-lg">
           ⬆️
         </div>
 
-        <h3 className="font-medium text-gray-800 dark:text-gray-100">
+        <h3 className="font-medium text-gray-200">
           Upload sources
         </h3>
 
-        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+        <p className="text-sm text-gray-400 mt-1">
           Drag & drop or{" "}
           <button
             onClick={openFileManager}
-            className="text-purple-600 font-medium hover:underline"
+            className="text-purple-400 font-medium hover:text-purple-300 hover:underline transition-colors"
           >
             choose file
           </button>
         </p>
 
-        <p className="text-xs text-gray-400 mt-3">
+        <p className="text-xs text-gray-500 mt-3">
           PDF, DOCX, TXT, Images (OCR supported)
         </p>
       </div>
@@ -83,12 +81,10 @@ const FileUpload = ({ onFilesSelected }: Props) => {
           {files.map((file, index) => (
             <div
               key={index}
-              className="flex items-center justify-between bg-white dark:bg-gray-800
-                         border border-gray-200 dark:border-gray-700
-                         rounded-lg px-3 py-2 text-sm"
+              className="flex items-center justify-between bg-[#0a0a1a]/60 border border-white/5 rounded-lg px-3 py-2 text-sm"
             >
               <div className="truncate">
-                <p className="font-medium text-gray-800 dark:text-gray-100 truncate">
+                <p className="font-medium text-gray-300 truncate">
                   {file.name}
                 </p>
                 <p className="text-xs text-gray-500">
@@ -98,7 +94,7 @@ const FileUpload = ({ onFilesSelected }: Props) => {
 
               <button
                 onClick={() => removeFile(index)}
-                className="text-gray-400 hover:text-red-500"
+                className="text-gray-500 hover:text-red-400 p-1 hover:bg-white/5 rounded-md transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>

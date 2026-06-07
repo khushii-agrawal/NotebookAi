@@ -132,21 +132,21 @@ const UploadModal = ({
   // ========================
   if (loading) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
 
-        <div className="relative bg-white dark:bg-gray-800 w-full max-w-lg rounded-2xl shadow-2xl p-8 z-10">
+        <div className="relative bg-[#0d0d22]/90 border border-white/5 w-full max-w-lg rounded-2xl shadow-2xl p-8 z-10 backdrop-blur-xl">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 mx-auto mb-4 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-purple-500/10 rounded-2xl flex items-center justify-center border border-purple-500/20">
               <div className="relative">
-                <Sparkles className="w-8 h-8 text-purple-600 dark:text-purple-400 animate-pulse" />
+                <Sparkles className="w-8 h-8 text-purple-400 animate-pulse" />
               </div>
             </div>
-            <h2 className="text-xl font-bold text-gray-800 dark:text-white">
+            <h2 className="text-xl font-bold text-white">
               Processing Your Document
             </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-sm text-gray-400 mt-1 truncate max-w-xs mx-auto">
               {files[0]?.name}
             </p>
           </div>
@@ -161,30 +161,30 @@ const UploadModal = ({
               return (
                 <div
                   key={index}
-                  className={`flex items-center gap-4 p-3 rounded-xl transition-all duration-500 ${
+                  className={`flex items-center gap-4 p-3 rounded-xl transition-all duration-500 border ${
                     isActive
-                      ? "bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-700"
+                      ? "bg-purple-500/10 border-purple-500/30"
                       : isDone
-                      ? "opacity-60"
-                      : "opacity-30"
+                      ? "border-transparent opacity-60"
+                      : "border-transparent opacity-30"
                   }`}
                 >
                   {/* Icon */}
                   <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all ${
+                    className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 border transition-all ${
                       isDone
-                        ? "bg-green-100 dark:bg-green-900/30"
+                        ? "bg-green-500/10 border-green-500/20"
                         : isActive
-                        ? "bg-purple-100 dark:bg-purple-900/40"
-                        : "bg-gray-100 dark:bg-gray-700"
+                        ? "bg-purple-500/10 border-purple-500/20"
+                        : "bg-white/5 border-white/8"
                     }`}
                   >
                     {isDone ? (
-                      <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      <CheckCircle2 className="w-5 h-5 text-green-400" />
                     ) : isActive ? (
-                      <Loader2 className="w-5 h-5 text-purple-600 dark:text-purple-400 animate-spin" />
+                      <Loader2 className="w-5 h-5 text-purple-400 animate-spin" />
                     ) : (
-                      <StepIcon className="w-5 h-5 text-gray-400" />
+                      <StepIcon className="w-5 h-5 text-gray-500" />
                     )}
                   </div>
 
@@ -192,15 +192,15 @@ const UploadModal = ({
                   <span
                     className={`text-sm font-medium ${
                       isDone
-                        ? "text-green-700 dark:text-green-400 line-through"
+                        ? "text-green-400 line-through"
                         : isActive
-                        ? "text-purple-700 dark:text-purple-300"
-                        : "text-gray-400"
+                        ? "text-purple-300"
+                        : "text-gray-500"
                     }`}
                   >
                     {step.label}
                     {isActive && index === PROGRESS_STEPS.length - 1 && (
-                      <span className="text-xs ml-2 text-purple-400 dark:text-purple-500">
+                      <span className="text-xs ml-2 text-purple-400/80">
                         (this may take 20-40s)
                       </span>
                     )}
@@ -212,8 +212,8 @@ const UploadModal = ({
 
           {/* Timer */}
           <div className="text-center">
-            <p className="text-xs text-gray-400 dark:text-gray-500">
-              Elapsed: {elapsedTime}s
+            <p className="text-xs text-gray-500">
+              Elapsed time: {elapsedTime}s
             </p>
           </div>
         </div>
@@ -225,26 +225,26 @@ const UploadModal = ({
   // 🔹 NORMAL UPLOAD VIEW
   // ========================
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 backdrop-blur-md"
         onClick={onClose}
       />
 
       {/* Modal */}
-      <div className="relative bg-white dark:bg-gray-800 w-full max-w-3xl rounded-2xl shadow-xl p-6 z-10">
+      <div className="relative bg-[#0d0d22]/90 border border-white/5 w-full max-w-3xl rounded-2xl shadow-2xl p-6 z-10 backdrop-blur-xl">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+          <h2 className="text-lg font-semibold text-white">
             Add sources
           </h2>
-          <button onClick={onClose}>
-            <X className="w-5 h-5 text-gray-500 hover:text-gray-700 dark:text-gray-400" />
+          <button onClick={onClose} className="p-1 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+            <X className="w-5 h-5" />
           </button>
         </div>
 
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+        <p className="text-sm text-gray-400 mb-6">
           Upload documents so AI can generate a notebook summary and notes.
         </p>
 
@@ -255,8 +255,7 @@ const UploadModal = ({
         <div className="flex justify-end gap-3 mt-6">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm rounded-lg border border-gray-300
-                       dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="px-4 py-2 text-sm rounded-lg border border-white/8 hover:bg-white/5 text-gray-300 transition-colors"
           >
             Cancel
           </button>
@@ -264,10 +263,10 @@ const UploadModal = ({
           <button
             onClick={handleSave}
             disabled={files.length === 0}
-            className={`px-4 py-2 text-sm rounded-lg text-white ${
+            className={`px-4 py-2 text-sm rounded-lg text-white font-medium transition-all ${
               files.length === 0
-                ? "bg-purple-300 cursor-not-allowed"
-                : "bg-purple-600 hover:bg-purple-700"
+                ? "bg-purple-950/20 text-purple-300/40 border border-purple-900/20 cursor-not-allowed"
+                : "bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 shadow-md shadow-purple-500/10"
             }`}
           >
             Add sources
